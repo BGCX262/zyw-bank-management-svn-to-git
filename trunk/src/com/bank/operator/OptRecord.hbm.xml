@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+	<hibernate-mapping package="com.bank.operator">
+		<class name="com.bank.operator.OptRecord" table="OPTRECORD">
+			<id name="id" column="ID">
+				<generator class="identity" />
+			</id>
+			
+			<many-to-one name="employee" 
+				column="EMPLOYEE_ID" 
+				class="com.bank.operator.Employee" />
+				
+			<many-to-one name="account" 
+				column="ACCOUNT_ID" 
+				class="com.bank.entity.Account" />
+				
+			<property name="time" column="TIME" type="java.util.Date" />
+			<property name="optdesc" column="DESCRITION" length="256" />
+			
+			<!-- 业务操作日志 -->
+			<property name="opt" column="OPT" />
+			<property name="inAmt" column="IN_AMOUNT" />
+			<property name="outAmt" column="OUT_AMOUNT" />
+			<property name="bal" column="BALANCE" />
+			
+		</class>
+	</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+	<hibernate-mapping package="com.bank.entity">
+		<class name="com.bank.entity.CustLogInfo" table="CUSTLOGINFO">
+			<id name="id" column="ID">
+				<generator class="identity" />
+			</id>
+			<!-- 
+			<property name="customerId" column="CUSTOMER_ID" />
+			 -->
+			<many-to-one name="customer" 
+				column="CUSTOMER_ID"
+				class="com.bank.entity.Customer"
+				not-null="true"
+				lazy="false"
+				/>
+			<property name="password" column="PASSWORD" />
+			<property name="lastLoggingTime" column="LASTLOGGINGTIME" type="java.util.Date"/>
+		</class>
+	</hibernate-mapping>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="file:src/hibernate.cfg.xml">
+		</property>
+	</bean>
+	
+
+	<bean id="AccountDAO" class="com.bank.dao.AccountDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="CustomerDAO" class="com.bank.dao.CustomerDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="OptRecordDAO" class="com.bank.dao.OptRecordDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="EnterpriseAccDAO" class="com.bank.dao.EnterpriseAccDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="CustLogInfoDAO" class="com.bank.dao.CustLogInfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="RegularAccDAO" class="com.bank.dao.RegularAccDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="VIPAccDAO" class="com.bank.dao.VIPAccDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<!-- load the Service for DAO when it is needed -->
+	<bean id="RegularAccSer" 
+	class="com.bank.service.RegularAccSer"
+		abstract="false" lazy-init="default" autowire="default">
+		<property name="regaccDao">
+			<ref bean="RegularAccDAO" />
+		</property>
+		<property name="custDao">
+			<ref bean="CustomerDAO" />
+		</property>
+		<property name="custloginfoDao">
+			<ref bean="CustLogInfoDAO" />
+		</property>
+		<property name="optrecordDao">
+			<ref bean="OptRecordDAO" />
+		</property>
+		<property name="sessionfac">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>	
+	<bean id="EnterpriseAccSer" 
+	class="com.bank.service.EnterpriseAccSer"
+		abstract="false" lazy-init="default" autowire="default">
+		<property name="entaccDao">
+			<ref bean="EnterpriseAccDAO" />
+		</property>
+		<property name="custDao">
+			<ref bean="CustomerDAO" />
+		</property>
+		<property name="custloginfoDao">
+			<ref bean="CustLogInfoDAO" />
+		</property>
+		<property name="optrecordDao">
+			<ref bean="OptRecordDAO" />
+		</property>
+		<property name="accountDao">
+			<ref bean="AccountDAO" />
+		</property>
+		<property name="sessionfac">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>	
+	<bean id="VIPAccSer" 
+	class="com.bank.service.VIPAccSer"
+		abstract="false" lazy-init="default" autowire="default">
+		<property name="entaccDao">
+			<ref bean="EnterpriseAccDAO" />
+		</property>
+		<property name="custDao">
+			<ref bean="CustomerDAO" />
+		</property>
+		<property name="custloginfoDao">
+			<ref bean="CustLogInfoDAO" />
+		</property>
+		<property name="optrecordDao">
+			<ref bean="OptRecordDAO" />
+		</property>
+		<property name="accountDao">
+			<ref bean="AccountDAO" />
+		</property>
+		<property name="vipaccDao">
+			<ref bean="VIPAccDAO" />
+		</property>
+		<property name="sessionfac">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>	
+	
+	<bean id="ManagerDAO" class="com.bank.dao.ManagerDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="AdminDAO" class="com.bank.dao.AdminDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TellerDAO" class="com.bank.dao.TellerDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="SupervisorDAO" class="com.bank.dao.SupervisorDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="EmployeeDAO" class="com.bank.dao.EmployeeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean></beans>

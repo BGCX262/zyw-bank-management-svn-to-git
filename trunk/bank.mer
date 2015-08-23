@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ERDiagram version="1.1">
+  <Connection session="MyEclipse MySql" database="bank" />
+  <Drawing gridVisible="false" snapOn="false" fastRouting="false" labelsVisible="true" />
+  <Tables>
+    <Table name="account">
+      <Drawing expanded="true" location="0,0" dimensions="239,130" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="BIGINT" size="19" />
+        </Column>
+        <Column name="BALANCE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="TYPE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="CHAR" size="1" />
+        </Column>
+        <Column name="ISACTIVE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="REGISTEREDTIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DATETIME" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="custloginfo">
+      <Drawing expanded="true" location="0,175" dimensions="254,110" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="BIGINT" size="19" />
+        </Column>
+        <Column name="CUSTOMER_ID" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIGINT" size="19" />
+        </Column>
+        <Column name="PASSWORD" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="LASTLOGGINGTIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DATETIME" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="customer">
+      <Drawing expanded="true" location="299,175" dimensions="242,110" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="BIGINT" size="19" />
+        </Column>
+        <Column name="IDNUMBER" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIGINT" size="19" />
+        </Column>
+        <Column name="NAME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="REGISTEREDTIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DATETIME" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="enterpriseacc_commonusers">
+      <Drawing expanded="true" location="266,330" dimensions="235,70" />
+      <Columns>
+        <Column name="ENTERPRISEACC_ID" primary_key="true" foreign_key="false" required="true" unique="false">
+          <Data type="BIGINT" size="19" />
+        </Column>
+        <Column name="CUSTLOGINFO_ID" primary_key="true" foreign_key="false" required="true" unique="false">
+          <Data type="BIGINT" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="enterpriseacc_supervisors">
+      <Drawing expanded="true" location="0,465" dimensions="235,70" />
+      <Columns>
+        <Column name="ENTERPRISEACC_ID" primary_key="true" foreign_key="false" required="true" unique="false">
+          <Data type="BIGINT" size="19" />
+        </Column>
+        <Column name="CUSTLOGINFO_ID" primary_key="true" foreign_key="false" required="true" unique="false">
+          <Data type="BIGINT" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="enterpriseacc">
+      <Drawing expanded="true" location="0,580" dimensions="235,50" />
+      <Columns>
+        <Column name="ENTERPRISEACC_ID" primary_key="true" foreign_key="false" required="true" unique="false">
+          <Data type="BIGINT" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="optrecord">
+      <Drawing expanded="true" location="300,6" dimensions="273,110" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="BIGINT" size="19" />
+        </Column>
+        <Column name="ACCOUNT_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIGINT" size="19" />
+        </Column>
+        <Column name="TIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DATETIME" size="19" />
+        </Column>
+        <Column name="DESCRITION" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="LONGTEXT" size="2147483647" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="regularacc">
+      <Drawing expanded="true" location="280,465" dimensions="221,70" />
+      <Columns>
+        <Column name="REGULARACC_ID" primary_key="true" foreign_key="false" required="true" unique="false">
+          <Data type="BIGINT" size="19" />
+        </Column>
+        <Column name="CUSTLOGINFO_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIGINT" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="vipacc">
+      <Drawing expanded="true" location="0,330" dimensions="221,90" />
+      <Columns>
+        <Column name="VIPACC_ID" primary_key="true" foreign_key="false" required="true" unique="false">
+          <Data type="BIGINT" size="19" />
+        </Column>
+        <Column name="CUSTLOGINFO_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIGINT" size="19" />
+        </Column>
+        <Column name="DEBTTIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+  </Tables>
+  <Relationships />
+</ERDiagram>
+

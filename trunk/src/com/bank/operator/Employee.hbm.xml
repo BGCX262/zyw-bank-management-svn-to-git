@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+	<hibernate-mapping package="com.bank.operator">
+		<class name="com.bank.operator.Employee" table="EMPLOYEE">
+			<id name="id" column="ID">
+				<generator class="identity" />
+			</id>
+			<property name="name" column="NAME" />
+			<property name="password" column="PASSWORD" />
+			
+			<many-to-one name="superior" 
+				column="SUPERIOR_ID"
+				class="com.bank.operator.Employee"
+			/>
+			<many-to-one name="admin" 
+				column="ADMIN_ID"
+				class="com.bank.operator.Admin"
+			/>
+			
+			<joined-subclass name="com.bank.operator.Admin" table="ADMIN" >
+				<key column="ADMIN_ID" />
+		
+			</joined-subclass>
+			
+			<joined-subclass name="com.bank.operator.Teller" table="TELLER" >
+				<key column="TELLER_ID" />
+				
+				<joined-subclass name="com.bank.operator.Manager" table="MANAGER" >
+					<key column="MANAGER_ID" />
+					
+					<joined-subclass name="com.bank.operator.Supervisor" table="SUPERVISOR" >
+						<key column="SUPERVISOR_ID" />
+					</joined-subclass>
+				</joined-subclass>
+			
+			</joined-subclass>
+				
+
+
+			
+		</class>
+	</hibernate-mapping>

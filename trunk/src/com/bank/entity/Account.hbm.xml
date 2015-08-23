@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+	<hibernate-mapping package="com.bank.entity">
+		<class name="com.bank.entity.Account" table="ACCOUNT">
+			<id name="id" column="ID">
+				<generator class="identity" />
+			</id>
+			<property name="balance" column="BALANCE" />
+			<property name="type" column="TYPE" />
+			<property name="isActive" column="ISACTIVE" />
+			<property name="registeredTime" column="REGISTEREDTIME" type="java.util.Date" />
+
+			<!-- EnterpriseAcc子类继承关系  -->
+			<joined-subclass name="com.bank.entity.EnterpriseAcc" table="ENTERPRISEACC" >
+				<key column="ENTERPRISEACC_ID" foreign-key=""/>
+				<set name="supervisors" table="ENTERPRISEACC_SUPERVISORS" lazy="false">
+					<key column="ENTERPRISEACC_ID" />
+					<many-to-many column="CUSTLOGINFO_ID" class="com.bank.entity.CustLogInfo" lazy="false" />
+				</set>
+				<set name="commonusers" table="ENTERPRISEACC_COMMONUSERS" lazy="false">
+					<key column="ENTERPRISEACC_ID" />
+					<many-to-many column="CUSTLOGINFO_ID" class="com.bank.entity.CustLogInfo" lazy="false"/>
+				</set>
+			
+			</joined-subclass>
+			
+			<!-- RegularAcc子类继承关系  -->
+			<joined-subclass name="com.bank.entity.RegularAcc" table="REGULARACC">
+				<key column="REGULARACC_ID" />
+				<many-to-one name="rootuser" column="CUSTLOGINFO_ID" class="CustLogInfo" unique="true" lazy="false" />
+			</joined-subclass>
+			
+			<!-- VIPAcc子类继承关系  -->
+			<joined-subclass name="com.bank.entity.VIPAcc" table="VIPACC">
+				<key column="VIPACC_ID" />
+				<many-to-one name="rootuser" column="CUSTLOGINFO_ID" class="CustLogInfo" unique="true" lazy="false"/>
+				<property name="debtTime" column="DEBTTIME" type="java.util.Date" />
+				<property name="isFrozen" column="ISFROZEN" />
+			</joined-subclass>
+
+			
+		</class>
+	</hibernate-mapping>

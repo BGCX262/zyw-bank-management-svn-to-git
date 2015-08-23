@@ -1,0 +1,24 @@
+#MyEclipse Hibernate Properties
+#Sat Jan 01 16:30:24 CST 2011
+sessionFactoryName=com.bank.HibernateSessionFactory
+genBasicCompId=true
+profile=
+daoSFId=sessionFactory
+version=3.3
+jndiPath=
+detectM2M=true
+reStrategyClass=
+detectO2O=true
+springDaoFile=src/applicationContext.xml
+useJavaTypes=false
+keyGenerator=
+libInstallFolder=lib
+addLibs2Project=true
+genVersionTag=true
+sessionFactoryId=
+basePersistenceClass=com.bank.operator.Employee
+genAnnotations=false
+reSettingsFile=/BankManagement/hibernate.reveng.xml
+configFile=/BankManagement/src/hibernate.cfg.xml
+createConfigFile=true
+addLibs2Classpath=true
